@@ -20,14 +20,14 @@
             <a href="{{ route('Book.create') }}" class="btn btn-success" title="Tambah Buku"><i
                     class="bi bi-plus-square-fill fs-5"></i></a>
         </div>
-        @if ($data->isEmpty())
-            <div class="text-center mt-5">
-                <h3>Buku Tidak Ada</h3>
-                <p class="mb-1">Coba Cari Kata Kunci Lain<br>
-                   Tekan Tombol Kembali Utuk Melihat List Buku yang Ada </p>
-                <a href="{{route('Book.index')}}" class="btn btn-primary">Kembali</a>
-            </div>
-        @endif
+    @if ($data->isEmpty())
+        <div class="text-center mt-5">
+            <h3>Buku Tidak Ada</h3>
+            <p class="mb-1">Coba Cari Kata Kunci Lain<br>
+                Tekan Tombol Kembali Utuk Melihat List Buku yang Ada </p>
+            <a href="{{route('Book.index')}}" class="btn btn-primary">Kembali</a>
+        </div>
+    @endif
             <div class="row">
                 @foreach ($data as $row)
                     <div class="col-md-4 mb-4">
@@ -35,15 +35,12 @@
                             style="width: 100%; border-radius: 10px; overflow: hidden;">
                             <!-- Image -->
                             <img src="{{ asset('storage/' . $row->img) }}" class="card-img-top"
-                                style="height: 300px; object-fit: contain;" alt="{{ $row->judul }}">
+                                style="height: 300px; object-fit: contain;">
 
                             <!-- Card Body -->
                             <div class="card-body text-center">
                                 <h5 class="card-title fw-bold">{{ $row->judul }}</h5>
-                                <p class="card-text text-muted">{{ $row->Penulis }}</p>
-
-                                <!-- Pricing -->
-                                <p class="card-text fw-bold">Rp {{ number_format($row->harga, 0, ',', '.') }}</p>
+                                <p class="card-text text-muted">{{ $row->penulis }}</p>
 
                                 <!-- Publisher and Category -->
                                 <p class="card-text">

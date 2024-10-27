@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Novel Nest</title>
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -33,52 +33,21 @@
                     aria-expanded="false">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
+                @if (Request::is('Book'))
+                    <div class="search">
+                        <form method="GET" action="{{ route('Book.index') }}" id="form-search">
+                            <input type="text" name="search" placeholder="Cari"
+                                value="{{ old('search', $search) }}">
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-search"></i></button>
+                        </form>
+                    </div>
+                @endif
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                     <ul class="navbar-nav ms-auto">
                         @guest
-                            {{-- @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif --}}
                         @else
-                            @if (Request::is('Book'))
-                                <div class="search">
-                                    <form method="GET" action="{{ route('Book.index') }}" id="form-search">
-                                        <input type="text" name="search" placeholder="Cari"
-                                            value="{{ old('search', $search) }}">
-                                        <button type="submit" class="btn btn-link p-0 m-1"><i
-                                                class="bi bi-search"></i></button>
-                                    </form>
-                                </div>
-                            @endif
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle fw-bold" href="#"
-                                    role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                    v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
 
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        Keluar
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
                             <button id="toggle-sidebar" class="btn btn-primary ms-3">
                                 <i class="bi bi-list"></i> <!-- Icon untuk toggle -->
                             </button>
@@ -91,7 +60,6 @@
 
         <div class="container-fluid">
             <div class="row">
-                <!-- Sidebar -->
                 <!-- Sidebar -->
                 <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse show">
                     <div class="position-sticky">
@@ -142,7 +110,20 @@
                                     </ul>
                                 </div>
                             </li>
+                            <li class="nav-item mb-1">
+                                <a class="nav-link {{ Request::is('/User') ? 'active' : '' }} text-light"
+                                    href="/User">
+                                    <i class="bi bi-person-fill"></i>
+                                    <span>Pengguna</span>
+                                </a>
+                            </li>
                         </ul>
+                        <div class="das-link">
+                            <a class="nav-link {{ Request::is('/User') ? 'active' : '' }} text-light" href="/">
+                                <i class="bi bi-arrow-left-square-fill"></i>
+                                <span>Halaman Utama</span>
+                            </a>
+                        </div>
                     </div>
                 </nav>
 

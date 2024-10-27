@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdatePublisherRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class UpdatePublisherRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +23,17 @@ class UpdatePublisherRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'nama_perusahaan' => ['required', Rule::unique('publishers', 'nama_perusahaan')->ignore($this->route('Publisher'))],
+            'alamat_perusahaan' => ['required', Rule::unique('publishers', 'alamat_perusahaan')->ignore($this->route('Publisher'))]
+        ];
+    }
+    public function messages()
+    {
+        return[
+            'nama_perusahaan.required' => 'Nama Perusahaan Belum Di-isi',
+            'nama_perusahaan.unique'=>'Nama Perusahaan terdaftar',
+            'alamat_perusahaan.required'=>'Alamat Belum Di-isi',
+            'alamat_perusahaan.unique'=>'ALamat Perusahaan Sudah Terdaftar'
         ];
     }
 }

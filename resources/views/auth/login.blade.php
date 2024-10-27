@@ -3,11 +3,12 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
 </script>
-
+<title>Next Nest</title>
+<body style="background-image: url('{{asset('background/Backgorund.svg')}}'); background-size:cover; background-position:center; weight:100%;">
 <div class="container">
     <div class="row justify-content-center align-items-center" style="min-height: 100vh;">
         <div class="col-md-4">
-            <div class="card border-0 shadow-lg rounded">
+            <div class="card shadow-lg rounded">
                 <div class="card-body p-5">
                     <h3 class="text-center mb-4">Masuk</h3>
 
@@ -30,7 +31,7 @@
                             <label for="password" class="form-label">Kata Sandi</label>
                             <input id="password" type="password"
                                 class="form-control @error('password') is-invalid @enderror" name="password"
-                                autocomplete="current-password">
+                                autocomplete="current-password" >
                             @error('password')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -50,3 +51,4 @@
         </div>
     </div>
 </div>
+</body>

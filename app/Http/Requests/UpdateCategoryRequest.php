@@ -27,10 +27,11 @@ class UpdateCategoryRequest extends FormRequest
             'required',
             'string',
             Rule::unique('categories','category')
-            ->ignore($this->Category->id)
+            ->ignore($this->route('Category'))
             ]
         ];
     }
+
     public function messages()
     {
         return [
@@ -40,3 +41,4 @@ class UpdateCategoryRequest extends FormRequest
         ];
     }
 }
+

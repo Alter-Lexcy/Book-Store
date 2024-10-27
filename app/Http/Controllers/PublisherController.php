@@ -46,9 +46,10 @@ class PublisherController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Publisher $publisher)
+    public function edit($id)
     {
-        //
+        $publisher = Publisher::findOrFail($id);
+        return view('admin.Publisher.update',compact('publisher'));
     }
 
     /**
@@ -56,7 +57,8 @@ class PublisherController extends Controller
      */
     public function update(UpdatePublisherRequest $request, Publisher $publisher)
     {
-        //
+        $publisher->update($request->all());
+        return redirect()->route('Publisher.index')->with('Berhasil','Penerbit Sudah Diubah');
     }
 
     /**

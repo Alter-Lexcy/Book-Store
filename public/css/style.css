@@ -1,0 +1,43 @@
+a{
+    margin-left :25px;
+    margin-bottom: 10px;
+}
+.content {
+    display: flex;
+}
+
+.image {
+    margin-left: 25px
+}
+
+.text {
+    margin-left: 150px;
+}
+
+h2 {
+    margin-top: 0px;
+}
+
+.publisher {
+    margin-bottom: 0px;
+    color: #5a6166;
+}
+
+.content2 {
+    padding: 0px;
+    margin-top: 20px;
+    margin-left: -125px;
+    font-size: 1.0rem
+}
+
+.content2 p {
+    margin-bottom: 5px
+}
+.deskripsi{
+    margin-top: 20px;
+    margin-left: 25px;
+    margin-bottom: 0px;
+}
+.text-deskripsi{
+    margin-bottom: 5px;
+}
