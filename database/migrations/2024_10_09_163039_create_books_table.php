@@ -16,11 +16,8 @@ return new class extends Migration
             $table->string('img');
             $table->string('judul');
             $table->string('penulis');
-            $table->unsignedBigInteger('penerbit_id');
-            $table->foreign('penerbit_id')->references('id')->on('publishers');
+            $table->foreignId('penerbit_id')->constrained('publishers')->onUpdate('cascade');
             $table->date('tanggal_rilis');
-            $table->string('stok');
-            $table->bigInteger('harga');
             $table->text('deskripsi_buku')->nullable();
             $table->timestamps();
         });

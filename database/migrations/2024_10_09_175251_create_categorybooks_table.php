@@ -13,10 +13,8 @@ return new class extends Migration
     {
         Schema::create('categorybooks', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories');
-            $table->unsignedBigInteger('book_id');
-            $table->foreign('book_id')->references('id')->on('books');
+            $table->foreignId('category_id')->constrained('categories')->onUpdate('cascade');
+            $table->foreignId('book_id')->constrained('books')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

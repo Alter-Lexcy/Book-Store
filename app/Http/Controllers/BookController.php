@@ -26,6 +26,7 @@ class BookController extends Controller
                 $query->where('nama_perusahaan', 'like', '%' . $search . '%');
             })
             ->orWhere('judul', 'like', '%' . $search . '%')
+            ->orWhere('penulis','Like','%'.$search.'%')
             ->simplePaginate(3)->withQueryString();
         return view('admin.Book.index', compact('data', 'search'));
     }
@@ -65,17 +66,20 @@ class BookController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Book $book)
-    {
-        return view('admin.Book.show',compact('book'));
-    }
+        public function show($id)
+        {
+            $buku = Book::where('id',$id)->get();
+            return view('admin.book.show', compact('buku'));
+        }
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(Book $book)
     {
-        //
+        $category = $book->categorybook()->pluck('category')->toArray();
+        $penerbit = Publisher::all();
+        return view('admin.Book.update',compact('book','category','penerbit'));
     }
 
     /**
@@ -83,7 +87,25 @@ class BookController extends Controller
      */
     public function update(UpdateBookRequest $request, Book $book)
     {
-        //
+        if($request->hasFile('img')){
+            $gambar = $request->file('img')->store('Buku','public');
+            if($book->img){
+                Storage::disk('public')->delete($book->img);
+            }
+
+            $book->img = $gambar;
+        }
+
+        $book->judul = $request->judul;
+        $book->judul = $request->penulis;
+        $book->judul = $request->penerbit_id;
+        $book->judul = $request->tangal_rilis;
+        $book->judul = $request->stok;
+        $book->judul = $request->harga;
+        $book->save();
+        $book->categorybook()->sync($request->category_id);
+
+        return redirect()->route('Book.index')->with('Berhasil','Buku Suda Berhasil Di Ubah');
     }
 
     /**
