@@ -110,4 +110,10 @@
     margin-right: 200px;
 }
 
+.custom-focus:focus {
+    border-color: #391561 !important;
+    box-shadow: 0 0 0 0.2rem rgba(57, 21, 97, 0.25);
+    border: none;
+}
+
 

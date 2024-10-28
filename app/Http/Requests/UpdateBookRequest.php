@@ -30,8 +30,6 @@ class UpdateBookRequest extends FormRequest
             'category_id*'=>['exists:categorie,id'],
             'category_id'=>['required'],
             'tanggal_rilis'=>['required','date'],
-            'stok'=>['required','numeric','min:0'],
-            'harga'=>['required','numeric','min:0'],
         ];
     }
     public function  messages(){
@@ -44,10 +42,6 @@ class UpdateBookRequest extends FormRequest
             'category_id.required'=>'Kategori Belum Di-Pilih',
             'tanggal_rilis.required'=>'Tanggal Rilis Belum Di-isi',
             'tanggal__rilis.date'=>'Harus Berformat Tanggal',
-            'stok.required'=>'Stok Belum Di-isi',
-            'stok.min'=>'Stok Tidak Bisa Mines',
-            'harga.required'=>'harga Belum Di-isi',
-            'harga.min'=>'harga Tidak Bisa Mines',
         ];
     }
 }

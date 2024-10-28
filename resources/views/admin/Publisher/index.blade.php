@@ -42,7 +42,7 @@
                                 <td>{{ $i++ }}</td>
                                 <td>{{ $publisher->nama_perusahaan }}</td>
                                 <td>{{ $publisher->alamat_perusahaan }}</td>
-                                <td>{{ $publisher->deskripsi_perusahaan }}</td>
+                                <td>{{ $publisher->deskripsi_perusahaan ?? '-' }}</td>
                                 <td>
                                     <a href="{{ route('Publisher.edit', $publisher->id) }}"
                                         class="btn btn-warning btn-sm"><i class="bi bi-pencil-fill"></i></a>

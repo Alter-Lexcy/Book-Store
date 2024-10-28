@@ -1,0 +1,31 @@
+*{
+    font-family: 'Roboto',sans-serif;
+}
+body{
+    justify-items: center;
+    align-items: center;
+}
+.image{
+    width: 450px;
+}
+.text{
+    margin-left: 100px;
+}
+.text p{
+    margin-top: -15px;
+    margin-left:15px;
+    margin-bottom: 30px;
+}
+.text a{
+    color: white;
+    text-decoration: none;
+    margin-left: 65px;
+    background-color: #6a5088;
+    border-radius: 15px;
+    padding: 12px 16px;
+    transition: 0.5s;
+}
+.text a:hover{
+    background-color: #391561;
+    cursor: pointer;
+}

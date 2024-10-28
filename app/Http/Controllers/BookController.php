@@ -45,16 +45,13 @@ class BookController extends Controller
      */
     public function store(StoreBookRequest $request)
     {
-        $img = $request->img->store('Buku', 'public');
+        $img = $request->img->store('Cover', 'public');
         $buku = Book::create([
             'img' => $img,
             'judul' => $request->judul,
             'penulis' => $request->penulis,
-            'penulis' => $request->penulis,
             'penerbit_id' => $request->penerbit_id,
             'tanggal_rilis' => $request->tanggal_rilis,
-            'stok' => $request->stok,
-            'harga' => $request->harga,
             'deskripsi_buku' => $request->deskripsi_buku
         ]);
 
@@ -88,7 +85,7 @@ class BookController extends Controller
     public function update(UpdateBookRequest $request, Book $book)
     {
         if($request->hasFile('img')){
-            $gambar = $request->file('img')->store('Buku','public');
+            $gambar = $request->file('img')->store('Cover','public');
             if($book->img){
                 Storage::disk('public')->delete($book->img);
             }
@@ -100,8 +97,6 @@ class BookController extends Controller
         $book->judul = $request->penulis;
         $book->judul = $request->penerbit_id;
         $book->judul = $request->tangal_rilis;
-        $book->judul = $request->stok;
-        $book->judul = $request->harga;
         $book->save();
         $book->categorybook()->sync($request->category_id);
 

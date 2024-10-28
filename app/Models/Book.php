@@ -14,8 +14,6 @@ class Book extends Model
         'penulis',
         'penerbit_id',
         'tanggal_rilis',
-        'stok',
-        'harga',
         'deskripsi_buku'
     ];
 

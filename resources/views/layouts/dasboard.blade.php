@@ -20,14 +20,13 @@
         <nav class="navbar">
             <div class="Logo">
                 <a href="/">
-                    <img src="{{asset('img/logo.png')}}" width="150px">
+                    <img src="{{asset('background/img/logo.png')}}" width="150px">
                 </a>
             </div>
             <ul>
                 <div class="input-group rounded search ">
                     <form action="" method="GET"></form>
-                    <input type="search" class="form-control rounded-5" placeholder="Cari Buku" aria-label="Search"
-                        aria-describedby="search-addon" style="width: 400px;" />
+                    <input type="search" class="form-control rounded-5 custom-focus " placeholder="Cari Buku" style="width: 400px;" />
                 </div>
                 @guest
                     @if (Route::has('login'))

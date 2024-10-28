@@ -78,16 +78,7 @@
                             <input type="date" class="form-control" id="tanggal_rilis" name="tanggal_rilis"
                                 value="{{ old('tanggal_rilis') }}">
                         </div>
-                        <div class="mb-3">
-                            <label for="stok" class="form-label">Stok</label>
-                            <input type="number" class="form-control" id="stok" name="stok"
-                                value="{{ old('stok') }}" placeholder="Masukkan jumlah stok">
-                        </div>
-                        <div class="mb-3">
-                            <label for="stok" class="form-label">Harga/pcs</label>
-                            <input type="number" class="form-control" id="harga" name="harga"
-                                value="{{ old('harga') }}" placeholder="Masukkan jumlah Harga">
-                        </div>
+
                         <div class="mb-3">
                             <label for="stok" class="form-label">Deskripsi Buku</label>
                             <textarea name="deskripsi_buku" id="" class="form-control">{{ old('deskripsi_buku') }}</textarea>

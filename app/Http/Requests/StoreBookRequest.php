@@ -29,8 +29,6 @@ class StoreBookRequest extends FormRequest
             'category_id'=>'required',
             'category_id.*'=>'exists:categories,id',
             'tanggal_rilis'=>'required|date',
-            'stok'=>'required|numeric|min:0',
-            'harga'=>'required|numeric|min:0',
             'deskripsi_buku'=>'unique:books,deskripsi_buku'
         ];
     }
@@ -46,12 +44,6 @@ class StoreBookRequest extends FormRequest
             'category_id.required'=>'Kategori Belum Di-pilih',
             'tanggal_rilis.required'=>'Tanggal Rilis Belum Di-isi',
             'tanggal_rilis.date'=>'Tanggal Rilis Harus Berformat Tanggal',
-            'stok.required'=>'Stok belum Di-isi',
-            'stok.numeric'=>'Stok Harus Berformat Angka',
-            'stok.min'=>'Stok Tidak Bisa Mines',
-            'harga.required'=>'Harga belum Di-isi',
-            'harga.numeric'=>'Harga Harus Berformat Angka',
-            'harga.min'=>'Harga Tidak Bisa Mines',
             'deskripsi_buku.unique'=>'Deskripsi Buku Sudah Ada',
         ];
     }
